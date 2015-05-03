@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="routeMod">
+<head lang="en">
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="angular-1.3.0.14/angular.js"></script>
+    <script type="text/javascript" src="angular-1.3.0.14/angular-route.js"></script>
+    <link type="text/css" href="css/tutorial07.css" rel="stylesheet">
+    <title>tutorial07.html</title>
+</head>
+<body>
+    <header>
+        Header
+    </header>
+    <div id="content" ng-controller="MultiViewController">
+        <div  id="myView" ng-view="myView" ng-init="init()">
+
+        </div>
+        <div id="btnDiv">
+            <button ng-click="prePage()">上一页</button>
+            <button ng-click="nextPage()">下一页</button>
+        </div>
+    </div>
+    <footer>
+        Copyright:Rongbo_J
+    </footer>
+    <script>
+        var routeMod = angular.module('routeMod', ['ngRoute']);
+        routeMod.config(['$routeProvider',function($routeProvider){
+            $routeProvider.when('/1',{
+                templateUrl:'tutorial07/page1.html',
+                controller:'MultiViewController'
+            })
+            .when('/2',{
+                templateUrl:'tutorial07/page2.html',
+                controller:'MultiViewController'
+            })
+        }])
+
+        routeMod.controller("MultiViewController",function($scope,$log,$location){
+
+            $scope.init = function () {
+                $location.path("/1");
+            }
+            $scope.prePage = function () {
+                $log.info("prePage");
+                $location.path("/1");
+            };
+            $scope.nextPage = function () {
+                $log.info("nextPage");
+                $location.path("/2");
+            };
+        });
+
+    </script>
+</body>
+</html>

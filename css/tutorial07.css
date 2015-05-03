@@ -1,0 +1,28 @@
+header{
+    height:60px;
+    background: #ccc;
+    border:#333 1px solid;
+}
+#content {
+    margin-top:10px;
+    height: 300px;
+    border:#333 1px solid;
+}
+#content #myView{
+    width:80%;
+    height: 80%;
+    /*border:#333 solid 1px;*/
+    margin:5px auto 0px auto;
+}
+#content #btnDiv{
+    text-align: center;
+    margin-top:10px;
+}
+footer{
+    margin-top:10px;
+    height:60px;
+    background: #ccc;
+    border:#333 1px solid;
+    line-height: 60px;
+    text-align: center;
+}
