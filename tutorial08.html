@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="cookiesMod">
+<head lang="en">
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="angular-1.3.0.14/angular.js"></script>
+    <script type="text/javascript" src="angular-1.3.0.14/angular-cookies.js"></script>
+    <title>tutorial08</title>
+</head>
+<body ng-controller="CookiesController" ng-init="init()">
+<button ng-click="getInfo()">获取Cookies信息</button>
+</body>
+<script>
+    var cookiesMod = angular.module("cookiesMod",['ngCookies']);
+    cookiesMod.controller("CookiesController",function($scope,$log,$cookieStore){
+        $scope.init = function()
+        {
+            $log.info("init functionn");
+            $cookieStore.put("person",{name:"Rongbo_J",age:23});
+        }
+
+        $scope.getInfo = function()
+        {
+            var person = $cookieStore.get("person") ;
+            alert("name : " + person.name +" , "+ "age : " + person.age);
+        }
+
+    });
+</script>
+</html>

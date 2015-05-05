@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="serverMod">
+<head lang="en">
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="angular-1.3.0.14/angular.js"></script>
+    <title>tutorial09</title>
+</head>
+<body ng-controller="ServerController" ng-init="init()">
+<p>name:{{name}}</p>
+<p>age:{{age}}</p>
+<button ng-click="getInfo()">请求</button>
+</body>
+<script>
+    var serverMod = angular.module("serverMod",[]);
+    serverMod.controller("ServerController",function($scope,$log,$http){
+        $scope.init = function()
+        {
+            $log.info("init functionn");
+
+        }
+
+        $scope.getInfo = function()
+        {
+            $http.get("json/person.json").success(function(data,status){
+                alert(status);
+                $scope.name = data.name;
+                $scope.age = data.age;
+            });
+        }
+
+    });
+</script>
+</html>
